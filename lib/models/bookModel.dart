@@ -1,4 +1,4 @@
-class Book {
+class BookModel {
   String? id;
   String title;
   String? description;
@@ -14,7 +14,7 @@ class Book {
   double price;
   int numberOfRating;
 
-  Book({
+  BookModel({
     this.id,
     required this.title,
     this.description,
@@ -32,8 +32,8 @@ class Book {
   });
 
   // Convert JSON to Dart object
-  factory Book.fromJson(Map<String, dynamic> json) {
-    return Book(
+  factory BookModel.fromJson(Map<String, dynamic> json) {
+    return BookModel(
       id: json['id'],
       title: json['title'],
       description: json['description'],

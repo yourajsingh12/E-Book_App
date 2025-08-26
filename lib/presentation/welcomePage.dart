@@ -1,15 +1,18 @@
 import 'package:e_book/components/primaryButton.dart';
+import 'package:e_book/controller/auth/authController.dart';
 import 'package:e_book/presentation/homePage/home.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
-import '../res/appColors/appColors.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
 
+
   @override
   Widget build(BuildContext context) {
+  AuthController authController=Get.put(AuthController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -66,20 +69,27 @@ class WelcomePage extends StatelessWidget {
                     children: [
                       Flexible(
                         child: Text(
-                          "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
+                          "In publishing and graphic design, Lorem ipsum is a placeholder"
+                              " text commonly used to demonstrate the visual form of a document or"
+                              " a typeface without relying on meaningful content.",
                           style: Theme.of(context).textTheme.labelSmall,
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 30), // Fixed: Replaced Spacer
+                  const SizedBox(height: 30),
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: PrimayButton(
-                      btnName: "Continue",
+                      btnName: "Sign in with Google",
                       ontap: () {
-                        Get.offAll(const Home());
+                        authController.signInWithGoogle();
                       },
+                      icon: const FaIcon(
+                        FontAwesomeIcons.google,
+                        color: Colors.white,
+                        size: 20,
+                      ),
                     ),
                   ),
                 ],

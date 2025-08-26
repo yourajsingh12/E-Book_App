@@ -1,4 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <!-- Internet Access -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- Camera Access -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- For Android 12 and below -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!-- For Android 13 and above -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
     <application
         android:label="e_book"
         android:name="${applicationName}"

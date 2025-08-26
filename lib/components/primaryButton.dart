@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 
-class PrimayButton extends StatelessWidget{
-
+class PrimayButton extends StatelessWidget {
   final String btnName;
   final VoidCallback ontap;
-  const PrimayButton({super.key,required this.btnName,required this.ontap});
+  final Widget? icon;
+
+  const PrimayButton({
+    super.key,
+    required this.btnName,
+    required this.ontap,
+    this.icon,
+  });
 
   @override
-  Widget build(BuildContext context){
-
+  Widget build(BuildContext context) {
     return InkWell(
       onTap: ontap,
       child: Container(
         height: 55,
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(10),
@@ -21,18 +26,21 @@ class PrimayButton extends StatelessWidget{
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            if (icon != null) ...[
+              icon!,
+              const SizedBox(width: 10),
+            ],
             Text(
               btnName,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).colorScheme.background,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.background,
+                fontWeight: FontWeight.bold,
                 letterSpacing: 1.5,
-            ),
+              ),
             ),
           ],
         ),
       ),
     );
-
   }
-
-
 }
